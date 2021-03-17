@@ -782,9 +782,9 @@ Modify_config_client() {
 Install_jq() {
   if [[ ! -e ${jq_file} ]]; then
     if [[ ${bit} == "x86_64" ]]; then
-      wget --no-check-certificate "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64" -O ${jq_file}
+      wget --no-check-certificate "https://hub.fastgit.org/stedolan/jq/releases/download/jq-1.5/jq-linux64" -O ${jq_file}
     else
-      wget --no-check-certificate "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux32" -O ${jq_file}
+      wget --no-check-certificate "https://hub.fastgit.org/stedolan/jq/releases/download/jq-1.5/jq-linux32" -O ${jq_file}
     fi
     [[ ! -e ${jq_file} ]] && echo -e "${Error} JQ解析器 下载失败，请检查 !" && exit 1
     chmod +x ${jq_file}
@@ -793,7 +793,7 @@ Install_jq() {
     echo -e "${Info} JQ解析器 已安装，继续..."
   fi
   if [[ ! -e ${region_json} ]]; then
-    wget --no-check-certificate "https://raw.githubusercontent.com/michaelwittig/node-i18n-iso-countries/master/langs/zh.json" -O ${region_json}
+    wget --no-check-certificate "https://raw.fastgit.org/michaelwittig/node-i18n-iso-countries/master/langs/zh.json" -O ${region_json}
     [[ ! -e ${region_json} ]] && echo -e "${Error} ISO 3166-1 json文件下载失败，请检查！" && exit 1
   fi
 }
@@ -806,7 +806,7 @@ Install_caddy() {
     Set_server "server"
     Set_server_http_port
     if [[ ! -e "/usr/local/caddy/caddy" ]]; then
-      wget -N --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/caddy/caddy_install.sh
+      wget -N --no-check-certificate https://raw.fastgit.org/CokeMine/ServerStatus-Hotaru/master/caddy/caddy_install.sh
       chmod +x caddy_install.sh
       bash caddy_install.sh install
       rm -rf caddy_install.sh
@@ -969,7 +969,7 @@ Uninstall_ServerStatus_server() {
     rm -rf "/etc/init.d/status-server"
     if [[ -e "/etc/init.d/caddy" ]]; then
       /etc/init.d/caddy stop
-      wget -N --no-check-certificate https://raw.githubusercontent.com/CokeMine/ServerStatus-Hotaru/master/caddy/caddy_install.sh
+      wget -N --no-check-certificate https://raw.fastgit.org/CokeMine/ServerStatus-Hotaru/master/caddy/caddy_install.sh
       chmod +x caddy_install.sh
       bash caddy_install.sh uninstall
       rm -rf caddy_install.sh
